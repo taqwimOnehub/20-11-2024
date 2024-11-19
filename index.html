@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun ^=^</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2f; /* Warna background elegan */
+            color: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #f8d700; /* Warna teks emas untuk memberikan kesan elegan */
+            margin-top: 60px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Slider */
+        .slider-container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(231, 5, 5, 0.2);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;  /* Membuat gambar lebar penuh */
+            height: 500px; /* Membuat gambar tinggi penuh */
+            object-fit: contain;  /* Memastikan gambar mengisi area tanpa merusak proporsi */
+            border-radius: 15px;  /* Membuat sudut gambar melengkung */
+        }
+
+        /* Tombol Navigasi */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Animasi Kembang Api */
+        .fireworks {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+        }
+
+        .firework {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #148fad; /* Warna kembang api merah */
+            animation: explode 1.5s infinite ease-out;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Musik Latar */
+        audio {
+            display: none; /* Sembunyikan kontrol audio */
+        }
+        
+        .end-screen {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #f8d700;
+        font-size: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Judul Ucapan -->
+    <h1>Happy Birthday Sayang :D</h1>
+
+    <!-- Slider Gambar -->
+    <div class="slider-container">
+        <div class="slider">
+            <img src="images/image1.gif" alt="Happy Birthday Image 1">
+            <img src="images/image2.jpg" alt="Happy Birthday Image 2">
+            <img src="images/image3.jpg" alt="Happy Birthday Image 3">
+            <img src="images/image4.jpg" alt="Happy Birthday Image 4">
+            <img src="images/image5.jpg" alt="Happy Birthday Image 5">
+            <img src="images/image6.jpg" alt="Happy Birthday Image 6">
+            <img src="images/image7.jpg" alt="Happy Birthday Image 7">
+            <img src="images/image8.jpg" alt="Happy Birthday Image 8">
+            <img src="images/image9.jpg" alt="Happy Birthday Image 9">
+            <img src="images/image10.jpg" alt="Happy Birthday Image 10">
+            <img src="images/image11.jpg" alt="Happy Birthday Image 11">
+            <img src="images/image12.jpg" alt="Happy Birthday Image 12">
+            <img src="images/image13.jpg" alt="Happy Birthday Image 13">
+            <img src="images/image14.jpg" alt="Happy Birthday Image 14">
+            <img src="images/image15.jpg" alt="Happy Birthday Image 15">
+            <img src="images/image16.jpg" alt="Happy Birthday Image 16">
+            <img src="images/image17.jpg" alt="Happy Birthday Image 17">
+            <img src="images/image18.jpg" alt="Happy Birthday Image 18">
+            <img src="images/image19.jpg" alt="Happy Birthday Image 19">
+        </div>
+        
+        <!-- Tombol Next & Prev -->
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- Fireworks Animation -->
+    <div class="fireworks">
+        <div class="firework" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="firework" style="left: 30%; animation-delay: 0.3s;"></div>
+        <div class="firework" style="left: 50%; animation-delay: 0.5s;"></div>
+        <div class="firework" style="left: 70%; animation-delay: 0.8s;"></div>
+        <div class="firework" style="left: 90%; animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Musik Latar (Sumber Musik Baru) -->
+    <audio id="birthdayMusic" autoplay loop>
+        <source src="music/videoplayback.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Menunggu sampai audio dapat diputar secara otomatis setelah user berinteraksi (untuk browser yang membatasi autoplay)
+        const music = document.getElementById('birthdayMusic');
+
+        // Cobalah memulai musik setelah interaksi dengan halaman, misalnya klik atau scroll
+        window.addEventListener('click', () => {
+            music.play();
+        });
+
+        // Fungsi untuk mengontrol slider gambar
+        let currentIndex = 0;
+        const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slider img');
+        const totalImages = images.length;
+
+        // Fungsi untuk menampilkan slide berikutnya
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Fungsi untuk menampilkan slide sebelumnya
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Tombol Next dan Prev
+        document.querySelector('.next').addEventListener('click', nextSlide);
+        document.querySelector('.prev').addEventListener('click', prevSlide);
+
+        function autoSlide() {
+        //nextSlide();
+        //setTimeout(autoSlide, 3000); // Ganti angka 3000 untuk mengatur jeda antar slide (dalam milidetik)
+    }
+
+    // Mulai otomatis saat halaman dimuat
+    autoSlide();
+
+    </script>
+
+</body>
+</html>
